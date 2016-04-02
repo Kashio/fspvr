@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "gulp run-tests",
-      "posttest": "npm run lint",
+    "posttest": "npm run lint",
     "lint": "eslint lib/ *.js tests/ && echo Lint passed."
   },
   "repository": {
@@ -30,5 +30,8 @@
     "gulp": "^3.9.1",
     "gulp-mocha": "^2.2.0",
     "mocha": "^2.4.5"
+  },
+  "dependencies": {
+    "underscore": "^1.8.3"
   }
 }
