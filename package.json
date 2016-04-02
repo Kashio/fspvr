@@ -4,7 +4,8 @@
   "description": "Node.js module for validating and reformating fs paths",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp run-tests",
+      "posttest": "npm run lint",
     "lint": "eslint lib/ *.js tests/ && echo Lint passed."
   },
   "repository": {
@@ -23,5 +24,11 @@
   "bugs": {
     "url": "https://github.com/Kashio/fspvr/issues"
   },
-  "homepage": "https://github.com/Kashio/fspvr#readme"
+  "homepage": "https://github.com/Kashio/fspvr#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-mocha": "^2.2.0",
+    "mocha": "^2.4.5"
+  }
 }
