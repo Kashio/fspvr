@@ -1,0 +1,27 @@
+{
+  "name": "fspvr",
+  "version": "1.0.0",
+  "description": "Node.js module for validating and reformating fs paths",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint lib/ *.js tests/ && echo Lint passed."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kashio/fspvr.git"
+  },
+  "keywords": [
+    "fs",
+    "path",
+    "paths",
+    "validate",
+    "reformat"
+  ],
+  "author": "Roy Mor <roy.mor173@gmail.com>",
+  "license": "GPL-3.0+",
+  "bugs": {
+    "url": "https://github.com/Kashio/fspvr/issues"
+  },
+  "homepage": "https://github.com/Kashio/fspvr#readme"
+}
