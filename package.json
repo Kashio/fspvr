@@ -6,7 +6,7 @@
   "scripts": {
     "test": "gulp run-tests",
     "posttest": "npm run lint",
-    "lint": "eslint lib/ *.js tests/ && echo Lint passed."
+    "lint": "eslint --fix --max-warnings 1 lib/ *.js tests/ && echo Lint passed."
   },
   "repository": {
     "type": "git",
