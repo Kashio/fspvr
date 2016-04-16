@@ -29,7 +29,8 @@
     "chai": "^3.5.0",
     "gulp": "^3.9.1",
     "gulp-mocha": "^2.2.0",
-    "mocha": "^2.4.5"
+    "mocha": "^2.4.5",
+    "mockery": "^1.6.2"
   },
   "dependencies": {
     "underscore": "^1.8.3"
