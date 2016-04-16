@@ -19,12 +19,12 @@ var reformatPath    = fspvr.reformatPath,
 mockery.registerAllowable('../index');
 
 var linuxPathMock = {
-	sep: '/';
-}
+	sep: '/'
+};
 
 var windowsPathMock = {
-	sep: '\\';
-}
+	sep: '\\'
+};
 
 var linuxOsMock = {
 	type: function () {
