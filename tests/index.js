@@ -18,6 +18,14 @@ var reformatPath    = fspvr.reformatPath,
 
 mockery.registerAllowable('../index');
 
+var linuxPathMock = {
+	sep: '/';
+}
+
+var windowsPathMock = {
+	sep: '\\';
+}
+
 var linuxOsMock = {
 	type: function () {
 		return "Linux";
@@ -29,6 +37,7 @@ var windowsOsMock = {
 		return "Windows_NT";
 	}
 };
+
 describe('#fspvr', function() {
 	before(function() {
 		mockery.enable({
@@ -40,9 +49,9 @@ describe('#fspvr', function() {
 	});
 	describe('#windows', function() {
 		before(function() {
+			mockery.registerMock('path', windowsPathMock);
 			mockery.registerMock('os', windowsOsMock);
 			fspvr = require('../index');
-			console.log('os is : ', require('os').type());
 		});
 		describe('#reformat path', function() {
 			it('path with illegal names', function() {
@@ -71,6 +80,7 @@ describe('#fspvr', function() {
 	});
 	describe('#linux & darwin', function() {
 		before(function() {
+			mockery.registerMock('path', linuxPathMock);
 			mockery.registerMock('os', linuxOsMock);
 			fspvr = require('../index');
 		});
