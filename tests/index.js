@@ -9,7 +9,7 @@ var should          = require('chai').should(),
 	mockery         = require('mockery');
 
 // lib modules
-var fspvr           = require('../index');;
+var fspvr           = require('../index');
 
 var reformatPath    = fspvr.reformatPath,
 	reformatSegment = fspvr.reformatSegment,
@@ -42,6 +42,7 @@ describe('#fspvr', function() {
 		before(function() {
 			mockery.registerMock('os', windowsOsMock);
 			fspvr = require('../index');
+			console.log('os is : ', require('os').type());
 		});
 		describe('#reformat path', function() {
 			it('path with illegal names', function() {
