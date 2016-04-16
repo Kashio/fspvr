@@ -9,7 +9,7 @@ var should          = require('chai').should(),
 	mockery         = require('mockery');
 
 // lib modules
-var fspvr;
+var fspvr           = require('../index');;
 
 var reformatPath    = fspvr.reformatPath,
 	reformatSegment = fspvr.reformatSegment,
