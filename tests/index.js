@@ -52,6 +52,10 @@ describe('#fspvr', function() {
 			mockery.deregisterMock(windowsOsMock);
 		});
 		describe('reformat', function() {
+			it('valid path', function() {
+				fspvr.reformatPath('c:\\Users\\Roy\\WebstormProjects\\kaiser\\lib\\websites\\fxp.co.il\\fxp.co.il\\')
+					.should.equal('c:\\Users\\Roy\\WebstormProjects\\kaiser\\lib\\websites\\fxp.co.il\\fxp.co.il\\');
+			});
 			it('path with illegal names', function() {
 				fspvr.reformatPath('C:\\A\\CON\\B\\PRN\\AUX\\CLOCK$\\NUL\\COM1\\COM2\\COM3\\COM4\\COM5\\COM6\\COM7\\COM8\\COM9' +
 						'\\LPT1\\LPT2\\LPT3\\LPT4\\LPT5\\LPT6\\LPT7\\LPT8\\LPT9\\C\\file.txt').should.equal('C:\\A\\B\\C\\file.txt');
@@ -64,6 +68,10 @@ describe('#fspvr', function() {
 			});
 		});
 		describe('validate', function() {
+			it('valid path', function() {
+				fspvr.isPathValid('c:\\Users\\Roy\\WebstormProjects\\kaiser\\lib\\websites\\fxp.co.il\\fxp.co.il\\')
+					.should.equal(true);
+			});
 			it('path with device names', function() {
 				fspvr.isPathValid('C:\\A\\CON\\B\\PRN\\AUX\\CLOCK$\\NUL\\COM1\\COM2\\COM3\\COM4\\COM5\\COM6\\COM7\\COM8\\COM9' +
 						'\\LPT1\\LPT2\\LPT3\\LPT4\\LPT5\\LPT6\\LPT7\\LPT8\\C\\LPT9\\file.txt').should.equal(false);
@@ -88,11 +96,17 @@ describe('#fspvr', function() {
 			mockery.deregisterMock(linuxOsMock);
 		});
 		describe('reformat', function() {
+			it('valid path', function() {
+				fspvr.reformatPath('/usr/local/sbin').should.equal('/usr/local/sbin');
+			});
 			it('path segment with invalid characters', function() {
 				fspvr.reformatSegment('foo/bar').should.equal('foobar');
 			});
 		});
 		describe('validate', function() {
+			it('valid path', function() {
+				fspvr.isPathValid('/usr/local/sbin').should.equal(true);
+			});
 			it('validate darwin and linux path segment with invalid characters', function() {
 				fspvr.isSegmentValid('foo/bar').should.equal(false);
 			});

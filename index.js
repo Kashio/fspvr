@@ -59,7 +59,9 @@ module.exports = {
 		if (!_.isString(fsPath)) {
 			throw new TypeError('path must be of type string');
 		}
-		var segments = fsPath.substring(fsPath.indexOf(path.sep) + 1).split(path.sep);
+		var segments = _.filter(fsPath.substring(fsPath.indexOf(path.sep) + 1).split(path.sep), function(segment) {
+			return segment !== '';
+		});
 		for (var i = 0; i < segments.length; i++) {
 			var replaceWith = module.exports.reformatSegment(segments[i], strict);
 			var find = util.format('%s%s', replaceWith === '' ? path.sep : '', segments[i]);
