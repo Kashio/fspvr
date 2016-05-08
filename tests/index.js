@@ -53,8 +53,8 @@ describe('#fspvr', function() {
 		});
 		describe('reformat', function() {
 			it('valid path', function() {
-				fspvr.reformatPath('c:\\Users\\Roy\\WebstormProjects\\kaiser\\lib\\websites\\fxp.co.il\\fxp.co.il\\')
-					.should.equal('c:\\Users\\Roy\\WebstormProjects\\kaiser\\lib\\websites\\fxp.co.il\\fxp.co.il\\');
+				fspvr.reformatPath('C:\\Users\\Xolo\\')
+					.should.equal('C:\\Users\\Xolo\\');
 			});
 			it('path with illegal names', function() {
 				fspvr.reformatPath('C:\\A\\CON\\B\\PRN\\AUX\\CLOCK$\\NUL\\COM1\\COM2\\COM3\\COM4\\COM5\\COM6\\COM7\\COM8\\COM9' +
@@ -69,7 +69,7 @@ describe('#fspvr', function() {
 		});
 		describe('validate', function() {
 			it('valid path', function() {
-				fspvr.isPathValid('c:\\Users\\Roy\\WebstormProjects\\kaiser\\lib\\websites\\fxp.co.il\\fxp.co.il\\')
+				fspvr.isPathValid('C:\\Users\\Xolo\\')
 					.should.equal(true);
 			});
 			it('path with device names', function() {

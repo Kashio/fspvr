@@ -21,7 +21,7 @@ if (osType === "Linux" || osType === "Darwin") {
 } else {
 	illegalCharacters = /[/?<>\\,:*|"]/g;
 	illegalTrailingCharacters = /(?:[.\s]+)$/;
-	illegalNames = /CON|PRN|AUX|CLOCK\$|NUL|COM[1-9]|LPT[1-9]/ig;
+	illegalNames = /^CON|PRN|AUX|CLOCK\$|NUL|COM[1-9]|LPT[1-9]$/ig;
 }
 
 module.exports = {
