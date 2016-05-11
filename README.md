@@ -31,7 +31,7 @@ Optinally, you can reformat only a segment in a path
 ```js
 var fspvr = require('fspvr');
 var reformatedSegment = fspvr.reformatSegment('Windows?', true);
-console.log(reformatedPath); // Windows
+console.log(reformatedSegment); // Windows
 ```
 
 The second parameter is for `strict` reformation as described above.
@@ -50,8 +50,8 @@ Its responisible for `strict` validation, meaning it will validates againts ille
 Optinally, you can validate only a segment in a path
 ```js
 var fspvr = require('fspvr');
-var isValidPath = fspvr.validateSegment('Windows', true);
-console.log(isValidPath); // true
+var isValidSegment = fspvr.validateSegment('Windows', true);
+console.log(isValidSegment); // true
 ```
 
 The second parameter is for `strict` validation as described above.
