@@ -1,6 +1,6 @@
 {
   "name": "fspvr",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Node.js module for validating and reformating fs paths",
   "main": "index.js",
   "scripts": {
