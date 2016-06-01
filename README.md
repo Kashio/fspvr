@@ -1,7 +1,10 @@
 # fspvr - Cross-Platform filesystem path validator and reformer
 
+[![NPM](https://nodei.co/npm/fspvr.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/fspvr/)
+
 [![Build status](https://travis-ci.org/Kashio/fspvr.svg?branch=master)](https://travis-ci.org/Kashio/fspvr)
 [![Dependency Status](https://david-dm.org/Kashio/fspvr.svg)](https://david-dm.org/Kashio/fspvr)
+[![devDependency Status](https://david-dm.org/Kashio/fspvr/dev-status.svg)](https://david-dm.org/Kashio/fspvr#info=devDependencies)
 
 fspvr is a cross-platform filesystem validator and reformer which gets rid of illegal
 trailing or in-between characters and preserved words.
