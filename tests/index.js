@@ -6,17 +6,10 @@
 /*eslint-disable no-unused-vars*/
 var should          = require('chai').should(),
 /*eslint-enable no-unused-vars*/
-	mockery         = require('mockery');
+	mockery         = require('mockery'),
+	reload          = require("require-reload")(require);
 
-// lib modules
-var fspvr           = require('../index');
-
-var reformatPath    = fspvr.reformatPath,
-	reformatSegment = fspvr.reformatSegment,
-	isPathValid     = fspvr.isPathValid,
-	isSegmentValid  = fspvr.isSegmentValid;
-
-mockery.registerAllowable('../index');
+mockery.registerAllowables(['util', 'underscore']);
 
 var linuxPathMock = {
 	sep: '/'
@@ -47,51 +40,61 @@ describe('#fspvr', function() {
 	after(function() {
 		mockery.disable();
 	});
-	describe('#windows', function() {
+	describe('windows', function() {
+		var fspvr;
 		before(function() {
 			mockery.registerMock('path', windowsPathMock);
 			mockery.registerMock('os', windowsOsMock);
-			fspvr = require('../index');
+			fspvr = reload('../index');
 		});
-		describe('#reformat path', function() {
+		after(function() {
+			mockery.deregisterMock(windowsPathMock);
+			mockery.deregisterMock(windowsOsMock);
+		});
+		describe('reformat', function() {
 			it('path with illegal names', function() {
-				reformatPath('C:\\A\\CON\\B\\PRN\\AUX\\CLOCK$\\NUL\\COM1\\COM2\\COM3\\COM4\\COM5\\COM6\\COM7\\COM8\\COM9' +
+				fspvr.reformatPath('C:\\A\\CON\\B\\PRN\\AUX\\CLOCK$\\NUL\\COM1\\COM2\\COM3\\COM4\\COM5\\COM6\\COM7\\COM8\\COM9' +
 						'\\LPT1\\LPT2\\LPT3\\LPT4\\LPT5\\LPT6\\LPT7\\LPT8\\LPT9\\C\\file.txt').should.equal('C:\\A\\B\\C\\file.txt');
 			});
 			it('path segment with invalid characters', function() {
-				reformatSegment('>M<y?\\ D,irec*to|ry"').should.equal('My Directory');
+				fspvr.reformatSegment('>M<y?\\ D,irec*to|ry"').should.equal('My Directory');
 			});
 			it('path segment with invalid trailing characters', function() {
-				reformatSegment('file..    ..').should.equal('file');
+				fspvr.reformatSegment('file..    ..').should.equal('file');
 			});
 		});
-		describe('#validate path', function() {
+		describe('validate', function() {
 			it('path with device names', function() {
-				isPathValid('C:\\A\\CON\\B\\PRN\\AUX\\CLOCK$\\NUL\\COM1\\COM2\\COM3\\COM4\\COM5\\COM6\\COM7\\COM8\\COM9' +
+				fspvr.isPathValid('C:\\A\\CON\\B\\PRN\\AUX\\CLOCK$\\NUL\\COM1\\COM2\\COM3\\COM4\\COM5\\COM6\\COM7\\COM8\\COM9' +
 						'\\LPT1\\LPT2\\LPT3\\LPT4\\LPT5\\LPT6\\LPT7\\LPT8\\C\\LPT9\\file.txt').should.equal(false);
 			});
 			it('path segment with invalid characters', function() {
-				isSegmentValid('>M<y?\\ D,irec*to|ry"').should.equal(false);
+				fspvr.isSegmentValid('>M<y?\\ D,irec*to|ry"').should.equal(false);
 			});
 			it('path segment with invalid trailing characters', function() {
-				isSegmentValid('file..    ..').should.equal(false);
+				fspvr.isSegmentValid('file..    ..').should.equal(false);
 			});
 		});
 	});
 	describe('#linux & darwin', function() {
+		var fspvr;
 		before(function() {
 			mockery.registerMock('path', linuxPathMock);
 			mockery.registerMock('os', linuxOsMock);
-			fspvr = require('../index');
+			fspvr = reload('../index');
 		});
-		describe('#reformat path', function() {
+		after(function() {
+			mockery.deregisterMock(linuxPathMock);
+			mockery.deregisterMock(linuxOsMock);
+		});
+		describe('reformat', function() {
 			it('path segment with invalid characters', function() {
-				reformatSegment('foo/bar').should.equal('foobar');
+				fspvr.reformatSegment('foo/bar').should.equal('foobar');
 			});
 		});
-		describe('#validate path', function() {
+		describe('validate', function() {
 			it('validate darwin and linux path segment with invalid characters', function() {
-				isSegmentValid('foo/bar').should.equal(false);
+				fspvr.isSegmentValid('foo/bar').should.equal(false);
 			});
 		});
 	});

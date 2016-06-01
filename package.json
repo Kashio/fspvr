@@ -30,7 +30,8 @@
     "gulp": "^3.9.1",
     "gulp-mocha": "^2.2.0",
     "mocha": "^2.4.5",
-    "mockery": "^1.6.2"
+    "mockery": "^1.6.2",
+    "require-reload": "^0.2.2"
   },
   "dependencies": {
     "underscore": "^1.8.3"
