@@ -9,7 +9,7 @@
     "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec",
     "lint": "eslint --fix --max-warnings 1 lib/ *.js tests/ && echo Lint passed.",
     "preversion": "npm test",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags && npm publish"
   },
   "repository": {
     "type": "git",
@@ -30,10 +30,12 @@
   "homepage": "https://github.com/Kashio/fspvr#readme",
   "devDependencies": {
     "chai": "^3.5.0",
+    "coveralls": "^2.11.14",
     "gulp": "^3.9.1",
-    "gulp-mocha": "^2.2.0",
+    "gulp-mocha": "^3.0.1",
     "istanbul": "^0.4.5",
-    "mocha": "^2.4.5",
+    "mocha": "^3.1.0",
+    "mocha-lcov-reporter": "^1.2.0",
     "mockery": "^1.6.2",
     "require-reload": "^0.2.2"
   },
