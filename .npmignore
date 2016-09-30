@@ -1,4 +1,5 @@
-tests
+test
 node_modules
 examples
 .idea
+coverage

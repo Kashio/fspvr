@@ -3,6 +3,7 @@
 [![NPM](https://nodei.co/npm/fspvr.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/fspvr/)
 
 [![Build status](https://travis-ci.org/Kashio/fspvr.svg?branch=master)](https://travis-ci.org/Kashio/fspvr)
+[![Coverage Status](https://coveralls.io/repos/github/Kashio/fspvr/badge.svg?branch=master)](https://coveralls.io/github/Kashio/fspvr?branch=master)
 [![Dependency Status](https://david-dm.org/Kashio/fspvr.svg)](https://david-dm.org/Kashio/fspvr)
 [![devDependency Status](https://david-dm.org/Kashio/fspvr/dev-status.svg)](https://david-dm.org/Kashio/fspvr#info=devDependencies)
 
@@ -57,8 +58,8 @@ console.log(isValidSegment); // true
 The second parameter is for `strict` validation as described above.
 
 ## Tests
-To run tests type the following in your shell<br/>
-`npm run test`
+Run tests with<br/>
+`$ npm run test`
 
 ## License
 

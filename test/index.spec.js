@@ -31,7 +31,7 @@ var windowsOsMock = {
 	}
 };
 
-describe('#fspvr', function() {
+describe('fspvr', function() {
 	before(function() {
 		mockery.enable({
 			warnOnReplace: false
@@ -51,7 +51,7 @@ describe('#fspvr', function() {
 			mockery.deregisterMock(windowsPathMock);
 			mockery.deregisterMock(windowsOsMock);
 		});
-		describe('reformat', function() {
+		describe('#reformat()', function() {
 			it('valid path', function() {
 				fspvr.reformatPath('C:\\Users\\Xolo\\')
 					.should.equal('C:\\Users\\Xolo\\');
@@ -67,7 +67,7 @@ describe('#fspvr', function() {
 				fspvr.reformatSegment('file..    ..').should.equal('file');
 			});
 		});
-		describe('validate', function() {
+		describe('#validate()', function() {
 			it('valid path', function() {
 				fspvr.isPathValid('C:\\Users\\Xolo\\')
 					.should.equal(true);
@@ -84,7 +84,7 @@ describe('#fspvr', function() {
 			});
 		});
 	});
-	describe('#linux & darwin', function() {
+	describe('*nix', function() {
 		var fspvr;
 		before(function() {
 			mockery.registerMock('path', linuxPathMock);
@@ -95,7 +95,7 @@ describe('#fspvr', function() {
 			mockery.deregisterMock(linuxPathMock);
 			mockery.deregisterMock(linuxOsMock);
 		});
-		describe('reformat', function() {
+		describe('#reformat()', function() {
 			it('valid path', function() {
 				fspvr.reformatPath('/usr/local/sbin').should.equal('/usr/local/sbin');
 			});
@@ -103,7 +103,7 @@ describe('#fspvr', function() {
 				fspvr.reformatSegment('foo/bar').should.equal('foobar');
 			});
 		});
-		describe('validate', function() {
+		describe('#validate()', function() {
 			it('valid path', function() {
 				fspvr.isPathValid('/usr/local/sbin').should.equal(true);
 			});
